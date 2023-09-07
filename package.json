@@ -15,10 +15,14 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "element-plus": "^2.3.12",
     "vue": "^3.3.4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
     "@vitejs/plugin-vue": "^4.2.3",
