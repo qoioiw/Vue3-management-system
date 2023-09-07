@@ -18,7 +18,7 @@ export default defineConfig(({ command }) => {
       }),
       // 这个是保证开发阶段可以使用mock接口
       viteMockServe({
-         localEnabled: command === 'serve',
+        localEnabled: command === 'serve',
       }),
     ],
     resolve: {

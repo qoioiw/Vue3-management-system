@@ -4,7 +4,8 @@ import App from '@/App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 // 配置element-plus国际化
-//@ts-ignore 忽略当前文件ts类型的检测否则有红色提示(打包会失败)
+// 忽略当前文件ts类型的检测否则有红色提示(打包会失败)
+//@ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 // 获取应用实例对象
 const app = createApp(App)
@@ -25,12 +26,12 @@ import '@/styles/index.scss'
 import axios from 'axios'
 //登录接口
 axios({
-    url:'/api/user/login',
-    method:"post",
-    data:{
-      username:'admin',
-      password:'111111'
-    }
+  url: '/api/user/login',
+  method: 'post',
+  data: {
+    username: 'admin',
+    password: '111111',
+  },
 })
 
 // 将应用挂载到挂载点上
