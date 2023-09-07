@@ -1,20 +1,11 @@
 <template>
   <div>
-    <el-button type="primary" size="default" :icon="Plus">主要按钮</el-button>
-    <Test></Test>
+    测试SVG
+    <!-- 测试svg图标 -->
+    <svg-icon name="phone" color="pink" width="100px" height="100px"></svg-icon>
   </div>
 </template>
 
-<script lang="ts" setup>
-// 引入图标组件
-import { Plus } from '@element-plus/icons-vue'
-import Test from '@/components/Test.vue'
-
-for (let i = 0; i < 100; i++) {
-  console.log(i)
-}
-
-console.log('我是彭于晏')
-</script>
+<script lang="ts" setup></script>
 
 <style></style>
