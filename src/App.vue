@@ -1,9 +1,6 @@
 <template>
   <div>
-    <h1>
-      测试SVG
-    </h1>
-
+    <h1>测试SVG</h1>
   </div>
 </template>
 
