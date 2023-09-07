@@ -7,7 +7,7 @@ for (let i = 0; i < 100; i++) {
   console.log(i)
 }
 
-console.log("我是彭于晏");
+console.log('我是彭于晏')
 </script>
 
 <style></style>
