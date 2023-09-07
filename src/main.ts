@@ -20,4 +20,7 @@ app.component('SvgIcon', SvgIcon)
 import gloalComponent from '@/components'
 // 安装自定义插件
 app.use(gloalComponent)
+// 引入模板的全局的样式
+import '@/styles/index.scss'
+// 将应用挂载到挂载点上
 app.mount('#app')
