@@ -7,20 +7,23 @@ import 'element-plus/dist/index.css'
 // 忽略当前文件ts类型的检测否则有红色提示(打包会失败)
 //@ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+//svg插件需要的配置
+import 'virtual:svg-icons-register'
+// 引入插件
+import gloalComponent from '@/components'
+// 引入模板的全局的样式
+import '@/styles/index.scss'
+import router from './router'
 // 获取应用实例对象
 const app = createApp(App)
 // 将应用挂载到挂载点上
 app.use(ElementPlus, {
   locale: zhCn, //element-plus国际化配置
 })
-//svg插件需要的配置
-import 'virtual:svg-icons-register'
-// 引入插件
-import gloalComponent from '@/components'
+
 // 安装自定义插件
 app.use(gloalComponent)
-// 引入模板的全局的样式
-import '@/styles/index.scss'
-
+// 注册模板路由
+app.use(router)
 // 将应用挂载到挂载点上
 app.mount('#app')
