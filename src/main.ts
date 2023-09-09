@@ -14,6 +14,7 @@ import gloalComponent from '@/components'
 // 引入模板的全局的样式
 import '@/styles/index.scss'
 import router from './router'
+import pinia from './store'
 // 获取应用实例对象
 const app = createApp(App)
 // 将应用挂载到挂载点上
@@ -23,7 +24,11 @@ app.use(ElementPlus, {
 
 // 安装自定义插件
 app.use(gloalComponent)
+// 安装仓库
+app.use(pinia)
 // 注册模板路由
 app.use(router)
+//引入路由鉴权文件
+import './permisstion'
 // 将应用挂载到挂载点上
 app.mount('#app')

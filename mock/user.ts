@@ -6,7 +6,7 @@ function createUserList() {
     {
       userId: 1,
       avatar:
-        'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+        'https://5b0988e595225.cdn.sohucs.com/images/20180107/962a7db078ed4fbca97e106aad945d03.gif',
       username: 'admin',
       password: '111111',
       desc: '平台管理员',
@@ -18,7 +18,7 @@ function createUserList() {
     {
       userId: 2,
       avatar:
-        'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+        'https://5b0988e595225.cdn.sohucs.com/images/20180107/962a7db078ed4fbca97e106aad945d03.gif',
       username: 'system',
       password: '111111',
       desc: '系统管理员',
