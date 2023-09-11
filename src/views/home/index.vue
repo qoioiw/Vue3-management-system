@@ -1,50 +1,44 @@
 <template>
   <div class="homePage">
-    <div class="userinfo">
-      <img
-        :src="userStore.avatar"
-        style="width: 24px; height: 24px; border-radius: 50%"
-      />
-      <!-- 下拉菜单 -->
-      <el-dropdown>
-        <span class="el-dropdown-link">
-          {{ userStore.username }}
-        </span>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+    <!-- 窗口 -->
+    <div class="windows">
+      <div class="windows-body">
+        <el-row :gutter="20">
+          <el-col :span="3">
+            <SiderBar></SiderBar>
+          </el-col>
+          <el-col :span="5">
+            <ChartList></ChartList>
+          </el-col>
+          <el-col :span="12">
+            <ChatBox></ChatBox>
+          </el-col>
+          <el-col :span="4">
+            <UserList></UserList>
+          </el-col>
+        </el-row>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { getTime } from '@/utils/time'
-//引入用户相关的仓库,获取当前用户的头像、昵称
-import useUserStore from '@/store/modeules/user'
-import { onMounted } from 'vue'
-// 引入路由器对象
-import { useRouter } from 'vue-router'
-//获取存储用户信息的仓库对象
-let userStore = useUserStore()
-let $router = useRouter()
-onMounted(() => {
-  userStore.userInfo()
-})
-
-const logout = () => {
-  userStore.userLogout()
-  $router.push({ path: '/login' })
-}
+import homeWindow from './compontants/homewindows/index.vue'
+import SiderBar from './compontants/SideBar/index.vue'
+import ChatBox from './compontants/ChatBox/index.vue'
+import UserList from './compontants/UserList/index.vue'
+import ChartList from './compontants/ChartList/index.vue'
 </script>
 
 <style scoped lang="scss">
 .homePage {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(180deg, #7c7c7c 0%, rgba(245, 245, 245, 0) 100%);
+  background: url($backound);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   display: flex;
 
   flex-direction: row-reverse;
@@ -52,16 +46,20 @@ const logout = () => {
   justify-content: flex-start;
 
   /* 从右侧开始对齐 */
-  .userinfo {
-    flex-wrap: wrap;
-    height: 50px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-  }
-  .el-dropdown-link {
-    padding: 5px;
-    color: black;
+
+  .windows {
+    width: $home-window-width;
+    height: $home-window-height;
+    margin: auto auto;
+    padding: 20px;
+    background-color: #272a37;
+    border-radius: 20px;
+
+    color: white;
+    .windows-body {
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 </style>

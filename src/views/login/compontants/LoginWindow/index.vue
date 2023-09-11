@@ -133,7 +133,7 @@ const rules = {
 
   .login_btn {
     width: 100%;
-    background: #1c0b07;
+    background: $btn-color;
   }
 
   :deep(.el-form-item__error) {
