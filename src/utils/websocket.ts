@@ -67,12 +67,12 @@ const sendMsg = (message: string) => {
 const closeSocket = () => {
   if (socketConnecting) {
     socket?.close()
-    clearTimeout(heartbeatTimer)
+    stopHeartbeat()
     clearTimeout(reconnectTimer)
     console.log('关闭连接')
   } else {
     clearTimeout(reconnectTimer)
-    console.error('WebSocket连接未建立')
+    console.log('WebSocket连接未建立,不用关闭')
   }
 }
 

@@ -23,6 +23,17 @@ export const constantRoute = [
   },
   {
     // 登录成功以后展示数据的路由
+    path: '/map',
+    component: () => import('@/views/map/index.vue'),
+    name: 'map', //命名路由,
+    meta: {
+      title: '在线地图', //菜单标题
+      hidden: false, //代表路由标题在菜单中是否隐藏  true:隐藏 false:不隐藏
+      icon: 'Promotion', //菜单文字左侧的图标,支持element-plus全部图标
+    },
+  },
+  {
+    // 登录成功以后展示数据的路由
     path: '/404',
     component: () => import('@/views/404/index.vue'),
     name: '404', //命名路由

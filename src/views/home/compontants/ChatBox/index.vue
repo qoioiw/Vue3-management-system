@@ -1,121 +1,109 @@
 <template>
-  <div class="chatbox">
-    <div class="body">
-      <el-scrollbar
-        class="body-items"
-        height="calc($home-window-height - 40px - 20px - 40px);"
-      >
-        <div class="itemList">
-          <div class="item" v-for="(item, i) in 2" :key="i">
-            <img src="/public/favicon.ico" class="actor" />
-            <div class="item-body">
-              <div class="top">张三</div>
-              <div class="bottom">哈哈哈</div>
-            </div>
-          </div>
-        </div>
-        <div class="itemList">
-          <div class="item" v-for="(item, i) in dataList" :key="i">
-            <img src="/public/favicon.ico" class="actor" />
-            <div class="item-body">
-              <div class="top">张三</div>
-              <div class="bottom">{{ dataList }}</div>
-            </div>
-          </div>
-        </div>
-      </el-scrollbar>
+  <div class="chat">
+    <el-scrollbar  height="500px" class="chat-messages">
+      <div
+        v-for="(message, index) in messages"
+        :key="index"
+        :class="['message', { 'my-message': message.isMyMessage, 'other-message': !message.isMyMessage }]">
+        {{ message.text }}
+      </div>
+    </el-scrollbar>
+    <div class="chat-input">
+      <input v-model="newMessage" @keyup.enter="sendMessage" placeholder="Type a message..." />
     </div>
-    <div class="chatbox-input">
-      <el-input v-model="input" placeholder="Please input"></el-input>
-      <el-icon style="width: 40px; height: 40px">
-        <Position />
-      </el-icon>
-    </div>
-    <el-button @click="createSocket">创建连接</el-button>
-    <el-button @click="sendMsg('我在发消息')">发送消息</el-button>
-    <el-button @click="closeSocket">关闭连接</el-button>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { createSocket, sendMsg, closeSocket } from '@/utils/websocket'
-import { Search } from '@element-plus/icons-vue'
-import { onMounted, onBeforeUnmount, ref } from 'vue'
-const input = ref('')
-const dataList = ref()
+<script setup lang="ts" >
+import { ref, onMounted } from 'vue';
+
+const newMessage = ref(''); // 使用 ref 来初始化 newMessage
+const messages = ref([]);
+const ws = ref<WebSocket | null>(null);
+
+const sendMessage = () => {
+  if (newMessage.value.trim() !== '') {
+    messages.value.push({ text: newMessage.value, isMyMessage: true });
+    if (ws.value) {
+      ws.value.send(JSON.stringify({ text: newMessage.value }));
+    }
+    newMessage.value = '';
+  }
+};
+
 onMounted(() => {
-  createSocket()
-})
-onBeforeUnmount(() => {
-  console.log('我被调用了')
-  closeSocket()
-})
+  ws.value = new WebSocket('ws://localhost:3000');
+  
+  ws.value.addEventListener('open', (event) => {
+    console.log('WebSocket连接已建立', event);
+  });
+
+  ws.value.addEventListener('message', (event) => {
+    try {
+      const receivedMessage = JSON.parse(event.data);
+      messages.value.push(receivedMessage);
+      console.log('回复消息为:', event.data);
+    } catch (error) {
+      console.error('Error parsing JSON message:', error);
+    }
+  });
+
+  ws.value.addEventListener('close', (event) => {
+    console.log('WebSocket连接已关闭', event);
+  });
+
+  ws.value.addEventListener('error', (event) => {
+    console.error('WebSocket连接发生错误', event);
+  });
+});
 </script>
 
-<style lang="scss" scoped>
-.chatbox {
-  height: calc($home-window-height - 40px);
+<style scoped>
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
   width: 100%;
+}
 
-  background: $backound-window;
-  border-radius: 20px;
+.chat-messages {
+  flex: 1;
+  padding: 16px;
+}
 
-  .body {
-    color: white;
-    height: calc($home-window-height - 40px - 20px - 40px);
+.message {
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 4px;
+}
 
-    .body-items {
-      padding: 10px;
+.my-message {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+}
 
-      .itemList {
-        .item {
-          display: flex;
-          margin-bottom: 5px;
+.other-message {
+  align-self: flex-start;
+  background-color: #f0f0f0;
+  color: black;
+}
 
-          .actor {
-            height: 40px;
-            width: 40px;
-            border-radius: 20px;
-          }
+.chat-input {
+  width: 90%;
+  background-color: #f8f9fa;
+  color: black;
+  transform: translateY(-10px);
+  border-radius: 10px;
 
-          .item-body {
-            margin-top: 8px;
-            margin-left: 10px;
+}
 
-            .top {
-              font-size: 12px;
-              color: #7f7f7f;
-            }
+input {
+  border-radius: 10px;
 
-            .bottom {
-              padding: 15px;
-              background-color: #383c4b;
-              border-radius: 2px 18px 18px;
-              margin-top: 5px;
-              font-size: 16px;
-              color: #e6e6e6;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .chatbox-input {
-    display: flex;
-    margin: 10px;
-    height: 40px;
-    background: #424656;
-    border-radius: 10px;
-
-    :deep(.el-input__wrapper) {
-      background-color: #424656;
-      box-shadow: none;
-    }
-
-    :deep(.el-input__inner) {
-      color: white;
-    }
-  }
+  width: 100%;
+  padding: 8px;
+  border: none;
+  /* border-radius: 4px; */
 }
 </style>

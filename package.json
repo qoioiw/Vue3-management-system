@@ -17,7 +17,11 @@
     "build:pro": "vue-tsc && vite build --mode production"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
     "@element-plus/icons-vue": "^2.1.0",
+    "@vuemap/vue-amap": "^2.0.22",
+    "@vuemap/vue-amap-extra": "^2.0.8",
+    "@vuemap/vue-amap-loca": "^2.0.6",
     "axios": "^1.5.0",
     "element-plus": "^2.3.12",
     "nprogress": "^0.2.0",
