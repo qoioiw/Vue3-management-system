@@ -1,13 +1,18 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_silder">123</div>
+    <div class="layout_silder">
+      <Logo></Logo>
+    </div>
     <div class="layout_tabber">456</div>
     <div class="layout_main">789</div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Logo from './logo/index.vue'
+
+</script>
 
 <style scoped lang="scss">
 .layout_container {
