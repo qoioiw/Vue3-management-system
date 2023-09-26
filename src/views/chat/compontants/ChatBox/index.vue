@@ -1,61 +1,72 @@
 <template>
   <div class="chat">
-    <el-scrollbar  height="500px" class="chat-messages">
+    <el-scrollbar height="500px" class="chat-messages">
       <div
         v-for="(message, index) in messages"
         :key="index"
-        :class="['message', { 'my-message': message.isMyMessage, 'other-message': !message.isMyMessage }]">
+        :class="[
+          'message',
+          {
+            'my-message': message.isMyMessage,
+            'other-message': !message.isMyMessage,
+          },
+        ]"
+      >
         {{ message.text }}
       </div>
     </el-scrollbar>
     <div class="chat-input">
-      <input v-model="newMessage" @keyup.enter="sendMessage" placeholder="Type a message..." />
+      <input
+        v-model="newMessage"
+        @keyup.enter="sendMessage"
+        placeholder="Type a message..."
+      />
     </div>
   </div>
 </template>
 
-<script setup lang="ts" >
-import { ref, onMounted } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
 
-const newMessage = ref(''); // 使用 ref 来初始化 newMessage
-const messages = ref([]);
-const ws = ref<WebSocket | null>(null);
+const newMessage = ref('') // 使用 ref 来初始化 newMessage
+const messages = ref([])
+const ws = ref<WebSocket | null>(null)
 
 const sendMessage = () => {
   if (newMessage.value.trim() !== '') {
-    messages.value.push({ text: newMessage.value, isMyMessage: true });
+    messages.value.push({ text: newMessage.value, isMyMessage: true })
     if (ws.value) {
-      ws.value.send(JSON.stringify({ text: newMessage.value }));
+      ws.value.send(JSON.stringify({ text: newMessage.value }))
     }
-    newMessage.value = '';
+    newMessage.value = ''
   }
-};
+}
 
 onMounted(() => {
-  ws.value = new WebSocket('ws://localhost:3000');
-  
+  ws.value = new WebSocket('ws://localhost:3000')
+
   ws.value.addEventListener('open', (event) => {
-    console.log('WebSocket连接已建立', event);
-  });
+    console.log('WebSocket连接已建立', event)
+  })
 
   ws.value.addEventListener('message', (event) => {
     try {
-      const receivedMessage = JSON.parse(event.data);
-      messages.value.push(receivedMessage);
-      console.log('回复消息为:', event.data);
+      const receivedMessage = JSON.parse(event.data)
+      messages.value.push(receivedMessage)
+      console.log('回复消息为:', event.data)
     } catch (error) {
-      console.error('Error parsing JSON message:', error);
+      console.error('Error parsing JSON message:', error)
     }
-  });
+  })
 
   ws.value.addEventListener('close', (event) => {
-    console.log('WebSocket连接已关闭', event);
-  });
+    console.log('WebSocket连接已关闭', event)
+  })
 
   ws.value.addEventListener('error', (event) => {
-    console.error('WebSocket连接发生错误', event);
-  });
-});
+    console.error('WebSocket连接发生错误', event)
+  })
+})
 </script>
 
 <style scoped>
@@ -95,7 +106,6 @@ onMounted(() => {
   color: black;
   transform: translateY(-10px);
   border-radius: 10px;
-
 }
 
 input {

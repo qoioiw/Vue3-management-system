@@ -13,10 +13,21 @@ export const constantRoute = [
   {
     // 登录成功以后展示数据的路由
     path: '/',
-    component: () => import('@/views/home/index.vue'),
+    component: () => import('@/layout/index.vue'),
     name: 'layout', //命名路由,
     meta: {
       title: '首页', //菜单标题
+      hidden: false, //代表路由标题在菜单中是否隐藏  true:隐藏 false:不隐藏
+      icon: 'Promotion', //菜单文字左侧的图标,支持element-plus全部图标
+    },
+  },
+  {
+    // 登录成功以后展示数据的路由
+    path: '/chat',
+    component: () => import('@/views/chat/index.vue'),
+    name: 'chat', //命名路由,
+    meta: {
+      title: '聊天室', //菜单标题
       hidden: false, //代表路由标题在菜单中是否隐藏  true:隐藏 false:不隐藏
       icon: 'Promotion', //菜单文字左侧的图标,支持element-plus全部图标
     },

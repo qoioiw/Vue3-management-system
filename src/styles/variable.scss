@@ -10,6 +10,22 @@ $btn-color:#05418a;
 
 $backound-window:#323644;
 
-// 主页的大窗口的高度
+// chat  主页的大窗口的高度
 $home-window-height:83vh;
 $home-window-width:80vw;
+
+// 布局
+// 左侧的菜单宽度   
+$base-menu-width:260px;
+// 左侧菜单的背景颜色
+$base-menu-background:#001529;
+$base-menu-min-width:50px;
+
+// 顶部导航栏的高度
+$base-tabber-height:50px;
+
+// 左侧菜单logo高度设置
+$base-menu-logo-height:50px;
+
+// 左侧菜单logo右侧文字大小
+$base-logo-title-fontSize:20px;
