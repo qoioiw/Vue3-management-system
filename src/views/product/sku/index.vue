@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <h1>sku管理</h1>
-    </div>
+  <div class="gg">
+    <h1>sku管理</h1>
+  </div>
 </template>
 
-<script>
+<script></script>
 
-</script>
-
-<style></style>
+<style>
+.gg{
+    height: 100px;
+    width: 100%;
+    background-color: red;
+}
+</style>

@@ -1,11 +1,9 @@
 <template>
-    <div>
-        <h1>属性管理</h1>
-    </div>
+  <div>
+    <h1>属性管理</h1>
+  </div>
 </template>
 
-<script>
-
-</script>
+<script></script>
 
 <style></style>
