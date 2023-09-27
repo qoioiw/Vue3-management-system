@@ -1,7 +1,7 @@
 <template>
   <!-- 顶部左侧静态 -->
   <el-icon style="margin-right: 10px" @click="changeIcon">
-    <Expand></Expand>
+    <component :is="LayOutSettingStore.fold ? 'Fold' : 'Expand'"></component>
   </el-icon>
 
   <el-breadcrumb separator-icon="ArrowRight">
@@ -12,14 +12,32 @@
       v-show="item.meta.title"
       :to="item.path"
     >
-      <el-icon style="margin-right:2px;">
+      <el-icon>
         <component :is="item.meta.icon"></component>
       </el-icon>
 
-      <span>{{ item.meta.title }}</span>
+      <span  style="margin: 0px 5px" >{{ item.meta.title }}</span>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
+
+<script lang="ts" setup >
+import {useRoute} from 'vue-router';
+
+import {ref} from 'vue';
+import useLayOutSettingStore from '@/store/modules/setting';
+//获取layout配置相关的仓库
+let LayOutSettingStore = useLayOutSettingStore();
+//获取路由对象
+let $route = useRoute();
+
+//点击图标的方法
+const changeIcon = () => {
+    //图标进行切换
+    LayOutSettingStore.fold = !LayOutSettingStore.fold
+}
+</script>
+
 
 <script lang="ts">
 export default {

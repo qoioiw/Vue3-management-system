@@ -1,7 +1,7 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_silder">
+    <div class="layout_silder" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <Logo></Logo>
       <!--展示菜单 -->
       <!-- 滚动组件 -->
@@ -12,16 +12,17 @@
           background-color="#001529"
           text-color="white"
           active-text-color="yellowgreen"
+          :collapse="LayOutSettingStore.fold?true:false" 
         >
           <!--根据路由动态生成菜单-->
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
-    <div class="layout_tabber">
+    <div class="layout_tabber"  :class="{ fold: LayOutSettingStore.fold ? true : false }" >
       <Tabber></Tabber>
     </div>
-    <div class="layout_main">
+    <div class="layout_main"  :class="{ fold: LayOutSettingStore.fold ? true : false }" >
       <Main></Main>
     </div>
   </div>
@@ -37,7 +38,9 @@ import Tabber from './tabber/index.vue'
 // //获取用户相关的小仓库
 import useUserStore from '@/store/modules/user'
 
+import useLayOutSettingStore from '@/store/modules/setting'
 let userStore = useUserStore()
+let LayOutSettingStore = useLayOutSettingStore();
 //获取路由对象
 let $route = useRoute()
 </script>
@@ -48,6 +51,7 @@ let $route = useRoute()
   height: 100vh;
 
   .layout_silder {
+    color: white;
     width: $base-menu-width;
     height: 100vh;
     background: $base-menu-background;
@@ -61,6 +65,10 @@ let $route = useRoute()
         border-right: none;
       }
     }
+
+    &.fold {
+            width: $base-menu-min-width;
+        }
   }
 
   .layout_tabber {
@@ -70,6 +78,11 @@ let $route = useRoute()
     top: 0px;
     left: $base-menu-width;
     transition: all 0.3s;
+
+    &.fold {
+            width: calc(100vw - $base-menu-min-width );
+            left: $base-menu-min-width;
+        }
   }
 
   .layout_main {
@@ -82,6 +95,11 @@ let $route = useRoute()
     padding: 20px;
     overflow: auto;
     transition: all 0.3s;
+
+    &.fold {
+            width: calc(100vw - $base-menu-min-width );
+            left: $base-menu-min-width;
+        }
   }
 }
 </style>
