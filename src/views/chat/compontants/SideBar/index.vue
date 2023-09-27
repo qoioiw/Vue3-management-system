@@ -23,7 +23,7 @@
 <script lang="ts" setup>
 import { getTime } from '@/utils/time'
 //引入用户相关的仓库,获取当前用户的头像、昵称
-import useUserStore from '@/store/modeules/user'
+import useUserStore from '@/store/modules/user'
 import { onMounted } from 'vue'
 // 引入路由器对象
 import { useRouter } from 'vue-router'

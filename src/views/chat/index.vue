@@ -5,7 +5,7 @@
       <div class="windows-body">
         <el-row :gutter="20">
           <el-col :span="3">
-            <SiderBar></SiderBar>
+            <SideBar></SideBar>
           </el-col>
           <el-col :span="5">
             <ChartList></ChartList>
@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import homeWindow from './compontants/homewindows/index.vue'
-import SiderBar from './compontants/SideBar/index.vue'
+import SideBar from './compontants/SideBar/index.vue'
 import ChatBox from './compontants/ChatBox/index.vue'
 import UserList from './compontants/UserList/index.vue'
 import ChartList from './compontants/ChartList/index.vue'

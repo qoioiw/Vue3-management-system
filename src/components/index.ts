@@ -15,8 +15,8 @@ export default {
       // 注册为全局组件
       app.component(key, allGloablComponent[key])
     })
-     //将element-plus提供图标注册为全局组件
-     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    //将element-plus提供图标注册为全局组件
+    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
       app.component(key, component)
     }
   },

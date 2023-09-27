@@ -18,7 +18,9 @@
       </el-scrollbar>
     </div>
     <div class="layout_tabber">456</div>
-    <div class="layout_main">789</div>
+    <div class="layout_main">
+      <Main></Main>
+    </div>
   </div>
 </template>
 
@@ -27,6 +29,7 @@
 
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
+import Main from './main/index.vue'
 // //获取用户相关的小仓库
 import useUserStore from '@/store/modules/user'
 
