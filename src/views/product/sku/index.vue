@@ -7,9 +7,9 @@
 <script></script>
 
 <style>
-.gg{
-    height: 100px;
-    width: 100%;
-    background-color: red;
+.gg {
+  height: 100px;
+  width: 100%;
+  background-color: red;
 }
 </style>
