@@ -16,28 +16,27 @@
         <component :is="item.meta.icon"></component>
       </el-icon>
 
-      <span  style="margin: 0px 5px" >{{ item.meta.title }}</span>
+      <span style="margin: 0px 5px">{{ item.meta.title }}</span>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
-<script lang="ts" setup >
-import {useRoute} from 'vue-router';
+<script lang="ts" setup>
+import { useRoute } from 'vue-router'
 
-import {ref} from 'vue';
-import useLayOutSettingStore from '@/store/modules/setting';
+import { ref } from 'vue'
+import useLayOutSettingStore from '@/store/modules/setting'
 //获取layout配置相关的仓库
-let LayOutSettingStore = useLayOutSettingStore();
+let LayOutSettingStore = useLayOutSettingStore()
 //获取路由对象
-let $route = useRoute();
+let $route = useRoute()
 
 //点击图标的方法
 const changeIcon = () => {
-    //图标进行切换
-    LayOutSettingStore.fold = !LayOutSettingStore.fold
+  //图标进行切换
+  LayOutSettingStore.fold = !LayOutSettingStore.fold
 }
 </script>
-
 
 <script lang="ts">
 export default {

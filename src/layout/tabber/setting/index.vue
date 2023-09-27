@@ -59,3 +59,13 @@
     </template>
   </el-dropdown>
 </template>
+
+<script setup lang="ts">
+import useLayOutSettingStore from '@/store/modules/setting'
+
+let layoutSettingStore = useLayOutSettingStore()
+
+const updateRefsh = () => {
+  layoutSettingStore.refsh = !layoutSettingStore.refsh
+}
+</script>
