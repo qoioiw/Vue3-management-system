@@ -36,7 +36,7 @@
 import { User, Lock } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 // 引入用户相关的小仓库
-import useUserStore from '@/store/modeules/user'
+import useUserStore from '@/store/modules/user'
 import { ElNotification } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { getTime } from '@/utils/time'

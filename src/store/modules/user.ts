@@ -7,7 +7,8 @@ import type { loginFrom, loginResponseData } from '@/api/user/type'
 import type { UserState } from './types/type'
 // 引入操作本地存储的工具方法
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
-import { constantRoute, asnycRoute, anyRoute } from '@/router/routes'
+// 引入路由(常量路由)
+import { constantRoute } from '@/router/routes'
 
 // 创建用户小仓库
 let useUserStore = defineStore('User', {
