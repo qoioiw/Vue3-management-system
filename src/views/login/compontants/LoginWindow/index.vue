@@ -38,10 +38,12 @@ import { reactive, ref } from 'vue'
 // 引入用户相关的小仓库
 import useUserStore from '@/store/modules/user'
 import { ElNotification } from 'element-plus'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { getTime } from '@/utils/time'
 // 获取路由器
 let $router = useRouter()
+//路由对象
+let $route = useRoute()
 // 引入小仓库
 let userStore = useUserStore()
 //获取el-form组件
@@ -66,13 +68,15 @@ const login = async () => {
     // 保证登录成功
     await userStore.userLogin(loginForm)
     // 编程式导航跳转到展示数据首页
-    $router.push('/'),
-      // 登录成功的提示信息
-      ElNotification({
-        type: 'success',
-        message: '登录成功',
-        title: `Hi,${getTime()}好`,
-      })
+    //判断登录的时候,路由路径当中是否有query参数，如果有就往query参数挑战，没有跳转到首页
+    let redirect: any = $route.query.redirect
+    $router.push({ path: redirect || '/' })
+    // 登录成功的提示信息
+    ElNotification({
+      type: 'success',
+      message: '登录成功',
+      title: `Hi,${getTime()}好`,
+    })
     // 登陆成功的加载效果消失
 
     loading.value = false
