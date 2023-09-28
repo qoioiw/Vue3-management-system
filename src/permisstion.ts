@@ -5,6 +5,7 @@ import setting from './setting'
 import nprogress from 'nprogress'
 //引入进度条样式
 import 'nprogress/nprogress.css'
+// 加载小球 不要
 nprogress.configure({ showSpinner: false })
 //获取用户相关的小仓库内部token数据,去判断用户是否登录成功
 import useUserStore from '@/store/modules/user'

@@ -52,7 +52,7 @@ let loginForms = ref()
 let loading = ref(false)
 
 // 收集账号与密码
-let loginForm = reactive({ username: 'admin', password: '111111' })
+let loginForm = reactive({ username: 'admin', password: 'atguigu123' })
 // 登录按钮回调
 const login = async () => {
   // 保证全部表单校验通过在发请求
