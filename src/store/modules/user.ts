@@ -1,7 +1,7 @@
 //创建用户相关的小仓库
 import { defineStore } from 'pinia'
 // 引入接口
-import { reqLogin, reqUserInfo } from '@/api/user'
+import { reqLogin, reqUserInfo,reqLogout } from '@/api/user'
 // 引入数据类型
 import type { loginFrom, loginResponseData } from '@/api/user/type'
 import type { UserState } from './types/type'
