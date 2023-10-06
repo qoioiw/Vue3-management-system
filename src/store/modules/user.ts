@@ -15,7 +15,7 @@ import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 import { constantRoute } from '@/router/routes'
 
 // 创建用户小仓库
-let useUserStore = defineStore('User', {
+const useUserStore = defineStore('User', {
   // 小仓库存储数据的地方
   state: (): UserState => {
     return {

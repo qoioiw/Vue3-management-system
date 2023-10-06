@@ -95,7 +95,6 @@ let $route = useRoute()
   }
 
   .layout_main {
-    background: green;
     position: absolute;
     width: calc(100% - $base-menu-width);
     height: calc(100vh - $base-tabber-height);

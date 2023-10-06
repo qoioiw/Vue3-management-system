@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" seup>
 import { getTime } from '@/utils/time'
 //引入用户相关的仓库,获取当前用户的头像、昵称
 import useUserStore from '@/store/modules/user'
