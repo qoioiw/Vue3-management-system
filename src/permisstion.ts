@@ -15,7 +15,7 @@ const userStore = useUserStore(pinia)
 //全局前置守卫
 router.beforeEach(async (to: any, from: any, next: any) => {
   document.title = `${setting.title} - ${to.meta.title}`
-  //to:你将要访问那个路由 
+  //to:你将要访问那个路由
   //from:你从来个路由而来
   //next:路由的放行函数
   nprogress.start()
