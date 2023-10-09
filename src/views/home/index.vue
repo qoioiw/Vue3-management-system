@@ -24,7 +24,7 @@ let userStore = useUserStore()
 <style scoped lang="scss">
 .box {
   display: flex;
-  
+
   .avatar {
     width: 100px;
     height: 100px;
