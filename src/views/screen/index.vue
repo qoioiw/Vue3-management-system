@@ -13,10 +13,13 @@
           <Age class="age"></Age>
         </div>
         <div class="center">
-
+          <Map class="map"></Map>
+          <Line class="line"></Line>
         </div>
         <div class="right">
-
+          <Rank class="rank"></Rank>
+          <Year class="year"></Year>
+          <Counter class="count"></Counter>
         </div>
       </div>
     </div>
@@ -32,6 +35,14 @@ import Tourist from './components/tourist/index.vue'
 import Sex from './components/sex/index.vue'
 import Age from './components/age/index.vue'
 
+//引入中间两个子组件
+import Map from './components/map/index.vue'
+import Line from './components/line/index.vue'
+
+//引入右侧三个子组件
+import Rank from './components/rank/index.vue'
+import Year from './components/year/index.vue'
+import Counter from './components/couter/index.vue'
 //获取数据大屏展示内容盒子的DOM元素
 let screen = ref()
 onMounted(() => {
