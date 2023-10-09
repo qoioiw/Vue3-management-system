@@ -16,6 +16,7 @@
           @click="addPermisstion(row)"
           size="small"
           :disabled="row.level == 4 ? true : false"
+          v-has="`btn.Trademark.add`"
         >
           {{ row.level == 3 ? '添加功能' : '添加菜单' }}
         </el-button>

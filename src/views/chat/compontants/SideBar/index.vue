@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="userinfo">
       <img
-        :src="userStore.avatar"
+      :src="userStore.avatar"
         style="width: 24px; height: 24px; border-radius: 50%"
       />
       <!-- 下拉菜单 -->
@@ -12,6 +12,7 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
+            <el-dropdown-item @click="toHome">返回首页</el-dropdown-item>
             <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -20,24 +21,28 @@
   </div>
 </template>
 
-<script lang="ts" seup>
-import { getTime } from '@/utils/time'
+<script lang="ts" setup >
 //引入用户相关的仓库,获取当前用户的头像、昵称
 import useUserStore from '@/store/modules/user'
-import { onMounted } from 'vue'
 // 引入路由器对象
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 //获取存储用户信息的仓库对象
 let userStore = useUserStore()
+//获取路由器对象
 let $router = useRouter()
-onMounted(() => {
-  userStore.userInfo()
-})
+//获取路由对向
+let $route = useRoute()
 
-const logout = () => {
-  userStore.userLogout()
-  $router.push({ path: '/login' })
+const logout = async () => {
+  await userStore.userLogout()
+
+  $router.push({ path: '/login', query: { redirect: $route.path } })
 }
+
+const toHome = () => {
+  $router.push({ path: '/home' })
+}
+
 </script>
 
 <style lang="scss" scoped>

@@ -46,15 +46,38 @@ export const constantRoute = [
   },
   {
     // 登录成功以后展示数据的路由
-    path: '/map',
-    component: () => import('@/views/map/index.vue'),
-    name: 'map', //命名路由,
+    path: '/maplayout',
+    component: () => import('@/layout/index.vue'),
+    name: 'maplayout', //命名路由,
     meta: {
-      title: '在线地图', //菜单标题
+      title: '', //菜单标题
       hidden: false, //代表路由标题在菜单中是否隐藏  true:隐藏 false:不隐藏
-      icon: 'Promotion', //菜单文字左侧的图标,支持element-plus全部图标
+      icon: '', //菜单文字左侧的图标,支持element-plus全部图标
     },
+    redirect: '/map',
+    children: [
+      {
+        path: '/map',
+        component: () => import('@/views/map/index.vue'),
+        meta: {
+          title: '在线地图',
+          hidden: false,
+          icon: 'Promotion',
+        },
+      },
+    ],
   },
+  // {
+  //   // 登录成功以后展示数据的路由
+  //   path: '/map',
+  //   component: () => import('@/views/map/index.vue'),
+  //   name: 'map', //命名路由,
+  //   meta: {
+  //     title: '在线地图', //菜单标题
+  //     hidden: false, //代表路由标题在菜单中是否隐藏  true:隐藏 false:不隐藏
+  //     icon: 'Promotion', //菜单文字左侧的图标,支持element-plus全部图标
+  //   },
+  // },
   {
     // 登录成功以后展示数据的路由
     path: '/404',
@@ -76,6 +99,10 @@ export const constantRoute = [
       icon: 'Platform',
     },
   },
+]
+
+//异步路由
+export const asnycRoute = [
   {
     path: '/acl',
     component: () => import('@/layout/index.vue'),
@@ -164,3 +191,16 @@ export const constantRoute = [
     ],
   },
 ]
+
+//任意路由
+export const anyRoute = {
+  //任意路由
+  path: '/:pathMatch(.*)*',
+  redirect: '/404',
+  name: 'Any',
+  meta: {
+    title: '任意路由',
+    hidden: true,
+    icon: 'DataLine',
+  },
+}

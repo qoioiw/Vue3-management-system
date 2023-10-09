@@ -3,7 +3,7 @@
 
 // 滚动条的外观设置
 ::-webkit-scrollbar{
-    width: 10px;
+    // width: 10px;
 }
 
 ::-webkit-scrollbar-track{
@@ -11,7 +11,7 @@
 }
 
 ::-webkit-slider-thumb{
-    width: 10px;
+    width: 0px;
     background-color: yellowgreen;
     border-radius: 10px;
 }
