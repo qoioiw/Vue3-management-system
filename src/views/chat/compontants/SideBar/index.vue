@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="userinfo">
       <img
-      :src="userStore.avatar"
+        :src="userStore.avatar"
         style="width: 24px; height: 24px; border-radius: 50%"
       />
       <!-- 下拉菜单 -->
@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<script lang="ts" setup >
+<script lang="ts" setup>
 //引入用户相关的仓库,获取当前用户的头像、昵称
 import useUserStore from '@/store/modules/user'
 // 引入路由器对象
@@ -42,7 +42,6 @@ const logout = async () => {
 const toHome = () => {
   $router.push({ path: '/home' })
 }
-
 </script>
 
 <style lang="scss" scoped>
