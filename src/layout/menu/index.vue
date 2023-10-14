@@ -67,4 +67,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped  >
+.el-menu-item.is-active {
+    color: #79bbff;
+}
+</style>
